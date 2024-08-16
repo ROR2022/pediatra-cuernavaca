@@ -7,7 +7,8 @@ export const userLinks = [
   ];
 
 
-  export const phoneUser = '7777937484';
+  export const phoneUser = '2481569807';
+  //+52 1 2481569807
 
 
   const basicText =`
