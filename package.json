@@ -14,9 +14,16 @@
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^5.16.7",
     "@mui/material-nextjs": "^5.16.6",
+    "@reduxjs/toolkit": "^2.2.7",
+    "axios": "^1.7.5",
+    "formik": "^2.4.6",
     "next": "14.2.5",
+    "pediatra-cuernavaca": "file:",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-redux": "^9.1.2",
+    "usehooks-ts": "^3.1.0",
+    "yup": "^1.4.0"
   },
   "devDependencies": {
     "@types/node": "^20",

@@ -7,6 +7,7 @@ import theme from '../theme';
 import dynamic from "next/dynamic";
 const PediFooter = dynamic(() => import("../components/PediFooter/PediFooter"), { ssr: false });
 const PediNavbar = dynamic(() => import("../components/PediNavbar/PediNavbar"), { ssr: false });
+import ReduxProvider from "@/components/ReduxProvider/ReduxProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,9 +26,11 @@ export default function RootLayout({
       <body className={inter.className}>
       <AppRouterCacheProvider>
         <ThemeProvider theme={theme}>
+        <ReduxProvider>
           <PediNavbar />
         {children}
         <PediFooter />
+        </ReduxProvider>
         </ThemeProvider>
       </AppRouterCacheProvider>
         </body>

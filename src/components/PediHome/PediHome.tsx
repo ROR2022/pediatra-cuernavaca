@@ -4,6 +4,7 @@ import MainCarrousel from './MainCarrousel'
 import Servicios from '../Servicios/Servicios'
 import Publicaciones from '../Publicaciones/Publicaciones'
 import Contacto from '../Contacto/Contacto'
+import Resenas from '../Resenas/Resenas'
 
 
 const PediHome = () => {
@@ -21,6 +22,7 @@ const PediHome = () => {
     
     >
       <MainCarrousel/>
+      <Resenas/>
       <Servicios/>
       <Publicaciones/>
       <Contacto/>
