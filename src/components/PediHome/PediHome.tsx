@@ -38,11 +38,13 @@ const PediHome = () => {
           </Link>
           </div>
         ) : (
+          <div style={{marginTop:'20px', display:'flex', justifyContent:'center'}}>
           <Link href="/login">
             <Button variant="contained" color="info">
               Iniciar sesión para crear memes
             </Button>
           </Link>
+          </div>
         )}
         <ShowMemes/>
         <Divider style={{ marginTop: "20px" }} />
