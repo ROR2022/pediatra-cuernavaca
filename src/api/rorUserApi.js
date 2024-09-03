@@ -90,3 +90,33 @@ export const updatedPassword = async (dataRecovery) => {
     return { error: tempError };
   }
 }
+
+export const getMemes = async () => {
+  try {
+    const response = await axios.get(`${hostURL}/api/meme`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return error.response.data;
+  }
+}
+
+export const createMeme= async (dataMeme, token) => {
+  // agregar token a la peticion
+  const config = {
+    headers: {
+      "Authorization": `Bearer ${token}`,
+    },
+  };
+  try {
+    //console.log("Data Meme: ", dataMeme);
+    //console.log("Token: ", token);
+    const response = await axios.post(`${hostURL}/api/meme`, dataMeme, config);
+    console.log("Response createMeme: ", response);
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return error.response.data;
+  }
+}

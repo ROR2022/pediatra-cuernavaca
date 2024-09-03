@@ -5,9 +5,16 @@ import Servicios from '../Servicios/Servicios'
 import Publicaciones from '../Publicaciones/Publicaciones'
 import Contacto from '../Contacto/Contacto'
 import Resenas from '../Resenas/Resenas'
+import Link from 'next/link'
+import { useSelector } from 'react-redux'
+import { Button } from '@mui/material'
+import ShowMemes from '../CreateMeme/ShowMemes'
+import { Divider } from '@mui/material'
 
 
 const PediHome = () => {
+  const user = useSelector((state: any) => state.user)
+
   return (
     <div
     style={{
@@ -21,6 +28,24 @@ const PediHome = () => {
     }}
     
     >
+      {user && user.email !== "" ? (
+        <div style={{marginTop:'20px', display:'flex', justifyContent:'center'}}>
+          <Link href="/create-meme">
+            <Button 
+            variant="contained" color="info">
+              Crear meme
+            </Button>
+          </Link>
+          </div>
+        ) : (
+          <Link href="/login">
+            <Button variant="contained" color="info">
+              Iniciar sesión para crear memes
+            </Button>
+          </Link>
+        )}
+        <ShowMemes/>
+        <Divider style={{ marginTop: "20px" }} />
       <MainCarrousel/>
       <Resenas/>
       <Servicios/>

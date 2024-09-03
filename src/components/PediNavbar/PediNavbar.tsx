@@ -1,42 +1,47 @@
-"use client"
-import React,{useState, MouseEvent, useEffect} from 'react'
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-import { useRouter } from 'next/navigation';
-import MedicalInformationIcon from '@mui/icons-material/MedicalInformation';
-import { useSelector } from 'react-redux';
-import Image from 'next/image';
-import { dataAvatares } from '@/api/dataEnv';
-import { useDispatch } from 'react-redux';
-import { DataUser, setUser } from '@/redux/userSlice';
-import { LOCALSTORAGE_KEY } from '@/api/dataEnv';
-import { useLocalStorage } from 'usehooks-ts';
+"use client";
+import React, { useState, MouseEvent, useEffect } from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Menu from "@mui/material/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
+import Container from "@mui/material/Container";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import Tooltip from "@mui/material/Tooltip";
+import MenuItem from "@mui/material/MenuItem";
+import AdbIcon from "@mui/icons-material/Adb";
+import { useRouter } from "next/navigation";
+import MedicalInformationIcon from "@mui/icons-material/MedicalInformation";
+import { useSelector } from "react-redux";
+import Image from "next/image";
+import { dataAvatares } from "@/api/dataEnv";
+import { useDispatch } from "react-redux";
+import { DataUser, setUser } from "@/redux/userSlice";
+import { LOCALSTORAGE_KEY } from "@/api/dataEnv";
+import { useLocalStorage } from "usehooks-ts";
 //import { title } from 'process';
 
 const basicPages = [
-  { title: 'Servicios', url: '/servicios' },
-  { title: 'Publicaciones', url: '/publicaciones' },
-  { title: 'Contacto', url: '/contacto' },
+  { title: "Servicios", url: "/servicios" },
+  { title: "Publicaciones", url: "/publicaciones" },
+  { title: "Contacto", url: "/contacto" },
 ];
-const dataLoginPage={title:'Login',url:'/login'};
-const dataLogoutPage={title:'Logout',url:'/logout'};
+const dataLoginPage = { title: "Login", url: "/login" };
+const dataLogoutPage = { title: "Logout", url: "/logout" };
 const settings = [
-  { title: 'Facebook', url: 'https://www.facebook.com/profile.php?id=100093387276573&sk=photos' },
-  { title: 'Instagram', url: 'https://www.instagram.com/pediatria_martha_ocampo/' },
-  { title: 'Ubicación', url: 'https://maps.app.goo.gl/CHATNnQ6ASMH8R2X9' },
+  {
+    title: "Facebook",
+    url: "https://www.facebook.com/profile.php?id=100093387276573&sk=photos",
+  },
+  {
+    title: "Instagram",
+    url: "https://www.instagram.com/pediatria_martha_ocampo/",
+  },
+  { title: "Ubicación", url: "https://maps.app.goo.gl/CHATNnQ6ASMH8R2X9" },
 ];
-
 
 const PediNavbar = () => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
@@ -52,11 +57,11 @@ const PediNavbar = () => {
 
   useEffect(() => {
     //console.log('user: ',user);
-    if(user?.email!==''){
-      setPages([...basicPages,dataLogoutPage]);
+    if (user?.email !== "") {
+      setPages([...basicPages, dataLogoutPage]);
     }
-    if(!user||user?.email===''){
-      setPages([...basicPages,dataLoginPage]);
+    if (!user || user?.email === "") {
+      setPages([...basicPages, dataLoginPage]);
     }
   }, [user]);
 
@@ -73,71 +78,81 @@ const PediNavbar = () => {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = (url:string) => {
+  const handleCloseNavMenu = (url: string) => {
     setAnchorElNav(null);
-    if(url) {
+    if (url) {
       router.push(url);
     }
-      
   };
 
-  const handleCloseUserMenu = (url:string) => {
+  const handleCloseUserMenu = (url: string) => {
     setAnchorElUser(null);
-    if(url){
+    if (url) {
       router.push(url);
     }
-    
   };
 
   return (
-    <AppBar position="static" sx={{bgcolor:'info.light'}}>
+    <AppBar position="static" sx={{ bgcolor: "info.light" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-        {user?.email===''?
-        <>
-          <MedicalInformationIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.02rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            Dra. Martha Iris Ocampo - Pediatra
-            </Typography>
+          {user?.email === "" ? (
+            <>
+              <MedicalInformationIcon
+                sx={{ display: { xs: "none", md: "flex" }, mr: 1 }}
+              />
+              <Typography
+                variant="h6"
+                noWrap
+                component="a"
+                href="/"
+                sx={{
+                  mr: 2,
+                  display: { xs: "none", md: "flex" },
+                  fontFamily: "monospace",
+                  fontWeight: 700,
+                  letterSpacing: ".02rem",
+                  color: "inherit",
+                  textDecoration: "none",
+                }}
+              >
+                Dra. Martha Iris Ocampo - Pediatra
+              </Typography>
             </>
-            :
+          ) : (
             <Box
-            sx={{
-              display: { xs: 'none', md: 'flex' },
-              alignItems: 'center',
-              gap: '10px',
-            }}
-            >
-              <Image 
-              style={{borderRadius:'50%'}}
-              src={dataAvatares.find(avatar=>avatar.title===user?.avatar)?.url||'/avatar0.png'} alt="logo" width={50} height={50} />
-              <Typography 
-              style={{
-                textDecoration:'none',
+              sx={{
+                display: { xs: "none", md: "flex" },
+                alignItems: "center",
+                gap: "10px",
               }}
-              variant="h5" noWrap component="a" href="/" sx={{ml:2}}>
+            >
+              <Image
+                style={{ borderRadius: "50%" }}
+                src={
+                  dataAvatares.find((avatar) => avatar.title === user?.avatar)
+                    ?.url || "/avatar0.png"
+                }
+                alt="logo"
+                width={50}
+                height={50}
+              />
+              <Typography
+                style={{
+                  textDecoration: "none",
+                }}
+                variant="h5"
+                noWrap
+                component="a"
+                href="/"
+                sx={{ ml: 2 }}
+              >
                 {user?.username}
               </Typography>
             </Box>
-            }
-            
-          
+          )}
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -152,66 +167,109 @@ const PediNavbar = () => {
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
+                vertical: "bottom",
+                horizontal: "left",
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
+                vertical: "top",
+                horizontal: "left",
               }}
               open={Boolean(anchorElNav)}
-              onClose={()=>handleCloseNavMenu('')}
+              onClose={() => handleCloseNavMenu("")}
               sx={{
-                display: { xs: 'block', md: 'none' },
+                display: { xs: "block", md: "none" },
               }}
             >
               {pages.map((page) => (
-                <MenuItem  
-                key={page.title} onClick={()=>handleCloseNavMenu(page.url)}>
+                <MenuItem
+                  key={page.title}
+                  onClick={() => handleCloseNavMenu(page.url)}
+                >
                   <Typography textAlign="center">{page.title}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <MedicalInformationIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="/"
+
+          {user?.email === "" ? (
+            <>
+              <MedicalInformationIcon
+                sx={{ display: { xs: "flex", md: "none" }, mr: 1 }}
+              />
+              <Typography
+                variant="h5"
+                noWrap
+                component="a"
+                href="/"
+                sx={{
+                  mr: 2,
+                  display: { xs: "flex", md: "none" },
+                  flexGrow: 1,
+                  fontFamily: "monospace",
+                  fontWeight: 700,
+                  letterSpacing: ".1rem",
+                  color: "inherit",
+                  textDecoration: "none",
+                }}
+              >
+                Pediatra
+              </Typography>
+            </>
+          ) : (
+            <Box
+              sx={{
+                width: "100%",
+                display: { xs: "flex", md: "none" },
+                justifyContent: "start",
+                alignItems: "center",
+                gap: "10px",
+              }}
+            >
+              <Image
+                style={{ borderRadius: "50%" }}
+                src={
+                  dataAvatares.find((avatar) => avatar.title === user?.avatar)
+                    ?.url || "/avatar0.png"
+                }
+                alt="logo"
+                width={50}
+                height={50}
+              />
+              <Typography
+                style={{
+                  textDecoration: "none",
+                }}
+                variant="h5"
+                noWrap
+                component="a"
+                href="/"
+                sx={{ ml: 2 }}
+              >
+                {user?.username}
+              </Typography>
+            </Box>
+          )}
+
+          <Box
             sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
+              marginLeft: "50px",
               flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.1rem',
-              color: 'inherit',
-              textDecoration: 'none',
+              display: { xs: "none", md: "flex" },
             }}
           >
-            Pediatra
-          </Typography>
-          <Box 
-          
-          sx={{ 
-            marginLeft: '50px',
-            flexGrow: 1, 
-            display: { xs: 'none', md: 'flex' } 
-            }}>
             {pages.map((page) => (
               <Button
                 key={page.title}
-                onClick={()=>handleCloseNavMenu(page.url)}
+                onClick={() => handleCloseNavMenu(page.url)}
                 sx={{
                   my: 2,
-                  color: 'GrayText',
-                  display: 'block',
-                  transition: 'background-color 0.3s, color 0.3s', // Smooth transition for hover effects
-                  '&:hover': {
-                    backgroundColor: 'primary.main', // Change background color on hover
-                    color: 'white', // Change text color on hover
+                  color: "GrayText",
+                  display: "block",
+                  transition: "background-color 0.3s, color 0.3s", // Smooth transition for hover effects
+                  "&:hover": {
+                    backgroundColor: "primary.main", // Change background color on hover
+                    color: "white", // Change text color on hover
                   },
                 }}
               >
@@ -227,23 +285,26 @@ const PediNavbar = () => {
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: '45px' }}
+              sx={{ mt: "45px" }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: "top",
+                horizontal: "right",
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
+                vertical: "top",
+                horizontal: "right",
               }}
               open={Boolean(anchorElUser)}
-              onClose={()=>handleCloseUserMenu('')}
+              onClose={() => handleCloseUserMenu("")}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting.title} onClick={()=>handleCloseUserMenu(setting.url)}>
+                <MenuItem
+                  key={setting.title}
+                  onClick={() => handleCloseUserMenu(setting.url)}
+                >
                   <Typography textAlign="center">{setting.title}</Typography>
                 </MenuItem>
               ))}
@@ -253,6 +314,6 @@ const PediNavbar = () => {
       </Container>
     </AppBar>
   );
-}
+};
 
-export default PediNavbar
+export default PediNavbar;
