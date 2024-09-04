@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux'
 import { Button } from '@mui/material'
 import ShowMemes from '../CreateMeme/ShowMemes'
 import { Divider } from '@mui/material'
+import InstallButton from '../InstallButton/InstallButton'
 
 
 const PediHome = () => {
@@ -28,6 +29,9 @@ const PediHome = () => {
     }}
     
     >
+
+      <InstallButton/>
+
       {user && user.email !== "" ? (
         <div style={{marginTop:'20px', display:'flex', justifyContent:'center'}}>
           <Link href="/create-meme">

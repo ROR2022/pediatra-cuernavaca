@@ -14,6 +14,8 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Pediatra Cuernavaca",
   description: "Dra. Martha Iris Ocampo - Pediatra",
+  manifest: "/manifest.json",
+  keywords: ["Pediatra", "Cuernavaca", "Dra. Martha Iris Ocampo", "Consultorio", "Pediatrico"],
 };
 
 export default function RootLayout({
